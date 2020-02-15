@@ -1,0 +1,13 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 60px 1.2fr;
+  grid-template-areas: "Navbar Navbar" "Table Details";
+  grid-gap: 10px 30px;
+}
+
+.Navbar { grid-area: Navbar; }
+
+.Table { grid-area: Table; }
+
+.Details { grid-area: Details; }

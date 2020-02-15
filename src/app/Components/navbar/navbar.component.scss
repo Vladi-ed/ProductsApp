@@ -1,0 +1,16 @@
+header {
+  height: 50px;
+  background: #a5ddff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  h2 {
+    color: #000000;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    left: 10px;
+  }
+}

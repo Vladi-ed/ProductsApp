@@ -1,6 +1,13 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    //    "curly": [true, "ignore-same-line"],
+    "curly": false,
+    "no-trailing-whitespace" : false,
+    "ignore-blank-lines" : true,
+    "one-line": false,
+
+
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -9,6 +16,7 @@
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
+
     "directive-selector": [
       true,
       "attribute",
