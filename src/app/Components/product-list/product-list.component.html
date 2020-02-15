@@ -1,7 +1,7 @@
+<button class="flex-item" (click)="openAddDialog()"  mat-raised-button color="primary">
+  Add
+</button>
 <div class="controls">
-  <button class="flex-item" (click)="openAddDialog()"  mat-raised-button color="primary">
-    Add
-  </button>
   <mat-form-field class="flex-item">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
@@ -17,8 +17,8 @@
 </div>
 
 
-<div class="mat-elevation-z8">
-  <table mat-table class="full-width-table" matSort aria-label="Elements">
+<div class="mat-elevation-z2">
+  <table mat-table matSort class="full-width-table">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
 <!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>-->
@@ -28,7 +28,8 @@
     <!-- Pic Column -->
     <ng-container matColumnDef="picture">
 <!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>Picture</th>-->
-      <td mat-cell *matCellDef="let row"><img alt="placeholder" src="../../../assets/image-placeholder.jpg" height="40px"/></td>
+      <td mat-cell *matCellDef="let row">
+        <img alt="placeholder" src="../../../assets/image-placeholder.jpg" height="50px"/></td>
     </ng-container>
 
     <!-- Name & Desc Column -->
@@ -39,7 +40,7 @@
           {{row.name}}
         </div>
         <div>
-          {{row.description}}Description...
+          {{row.description}}
         </div>
       </td>
     </ng-container>
@@ -47,7 +48,9 @@
     <!-- Button Column -->
     <ng-container matColumnDef="button">
       <!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>-->
-      <td mat-cell *matCellDef="let row">Button</td>
+      <td mat-cell *matCellDef="let row">
+        <button (click)="openAddDialog()"  mat-button color="primary">Details</button>
+      </td>
     </ng-container>
 
 <!--    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
@@ -55,7 +58,7 @@
   </table>
 
   <mat-paginator #paginator
-      [length]="dataSource?.data.length"
+      [length]="tableData?.data.length"
       [pageIndex]="0"
       [pageSize]="10"
       [pageSizeOptions]="[10, 20, 40, 50]">

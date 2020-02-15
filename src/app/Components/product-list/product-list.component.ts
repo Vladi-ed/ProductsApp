@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
-import { ProductListDataSource } from './product-list-datasource';
+import {MatTable, MatTableDataSource} from '@angular/material/table';
 import {Product as ProductListItem} from '../../Classes/product';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,28 +14,41 @@ export class ProductListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<ProductListItem>;
-  dataSource: ProductListDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  tableData: MatTableDataSource<ProductListItem>;
+
   displayedColumns = ['picture', 'name', 'button'];
 
+  constructor(private dataStore: DataService) {  }
+
   ngOnInit() {
-    this.dataSource = new ProductListDataSource();
+
+    // subscribe to data
+    this.dataStore.subject.subscribe(products => {
+        if (products) {
+          // console.table(contactsObj.contacts);
+          this.tableData = new MatTableDataSource(products);
+          console.log('Data loaded..');
+        }
+      });
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    ngAfterViewInit()
+    {
+      this.tableData.sort = this.sort;
+      this.tableData.paginator = this.paginator;
+      this.table.dataSource = this.tableData;
+    }
+
+    openAddDialog()
+    {
+
+    }
+
+    applyFilter(event: Event )
+    {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.tableData.filter = filterValue.trim().toLowerCase();
+    }
+
   }
-
-  openAddDialog() {
-
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-}

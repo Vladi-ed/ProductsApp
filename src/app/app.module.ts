@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-import { DetailsComponent } from './Components/details/details.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -23,7 +22,6 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [
     AppComponent,
     NavbarComponent,
-    DetailsComponent,
     ProductDetailsComponent,
     ProductListComponent
   ],
