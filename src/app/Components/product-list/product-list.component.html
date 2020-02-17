@@ -1,21 +1,22 @@
-<button class="flex-item" (click)="openAddDialog()"  mat-raised-button color="primary">
-  Add
-</button>
-<div class="controls">
-  <mat-form-field class="flex-item">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-  </mat-form-field>
-  <mat-form-field class="flex-item">
-    <mat-label>Sort by</mat-label>
-    <mat-select [(value)]="sortSelected" (selectionChange)="sortTable()">
-      <mat-option  *ngFor="let sortBy of allColumns" [value]="sortBy">{{sortBy | titlecase}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+<!--<button [ngStyle]="'padding: 30px'" (click)="openAddDialog()"  mat-raised-button color="primary">-->
+<!--  Add-->
+<!--</button>-->
 
 
-<div class="mat-elevation-z2">
+
+<div class="mat-elevation-z15">
+  <div class="controls">
+    <mat-form-field class="flex-item">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+    <mat-form-field class="flex-item">
+      <mat-label>Sort by</mat-label>
+      <mat-select [(value)]="sortSelected" (selectionChange)="sortTable()">
+        <mat-option  *ngFor="let sortBy of allColumns" [value]="sortBy">{{sortBy | titlecase}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <table mat-table matSort class="full-width-table">
     <!-- Id Column -->
     <ng-container matColumnDef="id">

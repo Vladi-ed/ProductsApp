@@ -32,7 +32,7 @@ export class ProductListComponent implements AfterViewInit, OnInit {
           // console.table(contactsObj.contacts);
           this.tableData = new MatTableDataSource(products);
           this.allColumns = Object.keys(this.tableData.data[0]);
-          console.log('Data loaded..', this.tableData.data[0]);
+          console.log('Data loaded..');
         }
       });
   }
