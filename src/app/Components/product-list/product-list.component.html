@@ -8,10 +8,8 @@
   </mat-form-field>
   <mat-form-field class="flex-item">
     <mat-label>Sort by</mat-label>
-    <mat-select>
-      <mat-option value="option">Name</mat-option>
-      <mat-option value="option">Id</mat-option>
-      <mat-option value="option">Date</mat-option>
+    <mat-select [(value)]="sortSelected" (selectionChange)="sortTable()">
+      <mat-option  *ngFor="let sortBy of allColumns" [value]="sortBy">{{sortBy | titlecase}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
@@ -36,8 +34,8 @@
     <ng-container matColumnDef="name">
 <!--      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>-->
       <td mat-cell *matCellDef="let row">
-        <div>
-          {{row.name}}
+        <div><b>
+          {{row.name}}</b>
         </div>
         <div>
           {{row.description}}

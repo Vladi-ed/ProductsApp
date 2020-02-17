@@ -19,6 +19,9 @@ export class ProductListComponent implements AfterViewInit, OnInit {
 
   displayedColumns = ['picture', 'name', 'button'];
 
+  allColumns = [];
+  sortSelected: any;
+
   constructor(private dataStore: DataService) {  }
 
   ngOnInit() {
@@ -28,27 +31,32 @@ export class ProductListComponent implements AfterViewInit, OnInit {
         if (products) {
           // console.table(contactsObj.contacts);
           this.tableData = new MatTableDataSource(products);
-          console.log('Data loaded..');
+          this.allColumns = Object.keys(this.tableData.data[0]);
+          console.log('Data loaded..', this.tableData.data[0]);
         }
       });
   }
 
-    ngAfterViewInit()
-    {
-      this.tableData.sort = this.sort;
-      this.tableData.paginator = this.paginator;
-      this.table.dataSource = this.tableData;
-    }
+  ngAfterViewInit()
+  {
+    this.tableData.sort = this.sort;
+    this.tableData.paginator = this.paginator;
+    this.table.dataSource = this.tableData;
+  }
 
-    openAddDialog()
-    {
-
-    }
-
-    applyFilter(event: Event )
-    {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.tableData.filter = filterValue.trim().toLowerCase();
-    }
+  openAddDialog()
+  {
 
   }
+
+  applyFilter(event: Event )
+  {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.tableData.filter = filterValue.trim().toLowerCase();
+  }
+
+  sortTable() {
+    this.tableData.sort.sort({disableClear: false, start: undefined, id: this.sortSelected});
+    // console.log(this.tableData.sort.active);
+  }
+}
