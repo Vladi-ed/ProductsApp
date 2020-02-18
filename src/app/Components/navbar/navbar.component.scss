@@ -1,16 +1,18 @@
-header {
-  height: 50px;
-  background: #a5ddff;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
 
-  h2 {
-    color: #000000;
-    margin: 0;
-    padding: 10px;
-    position: absolute;
-    left: 10px;
-  }
+.example-icon {
+  padding: 0 14px;
+}
+
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar
+{
+  height: 50px;
+}
+
+.nav-title
+{
+  margin-top: -3px;
 }

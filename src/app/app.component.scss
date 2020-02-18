@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 60px 1.2fr;
   grid-template-areas: "Navbar Navbar" "Table Details";
-  grid-gap: 10px 30px;
+  grid-gap: 20px 30px;
 }
 
 .Navbar { grid-area: Navbar; }

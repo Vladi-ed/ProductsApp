@@ -12,4 +12,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openAddDialog() {
+    alert('add new product');
+  }
 }
